@@ -1,1 +1,35 @@
-<h1>New Article</h1>
+<!--
+    The url: articles_path helper points the to 'articles' prefix in a url.
+    Since this form creates a new article, it uses the POST method to do so,
+    so it will use the 'POST articles' protocol. Looking in the 'rake routes'
+    this route points to the 'articles#create' url.
+-->
+
+<%= form_for :article, url: articles_path do |f| %>
+    <p>
+        <!--
+            :title refers to the title property of the article resource
+            Typically, this means the title column in the article table.
+            The same goes for the :text below.
+        -->
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :text %><br>
+        <%= f.text_area :text %>
+    </p>
+    <p>
+      <!--
+          If you view the HTML code produced, this button has a name ="commit",
+          of type="submit" with value="Save Article".
+          It knows it saves an article from the "submit" type and that
+          it refers to an Article from the form builder (recall form_for :article on top)
+      -->
+      <%= f.submit %>
+        <!--
+            When the form is submitted, its contents will be passed to Rails as 'parameters'.
+            Those 'parameters' can be references inside the controller actions and do sth with them.
+        -->
+    </p>
+<% end %>

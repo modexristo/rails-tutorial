@@ -1,1 +1,12 @@
 <h1>Hello, Rails!</h1>
+<!--
+    link_to is a build-in Rails helper for views
+    It creates a hyperlink based on the text to display and the path it follows
+    in this case controller: 'articles' translates to /articles (see rake routes)
+-->
+<%= link_to 'My Blog', controller: 'articles' %>
+<%= link_to 'New article', new_article_path %>
+
+<!-- to add an external path
+    <%= link_to 'Google', 'http://www.google.com' %>
+-->

@@ -8,46 +8,55 @@
     this route points to the 'articles#create' url.
 -->
 
-<%= form_for :article, url: articles_path do |f| %>
+<%#= form_for :article, url: articles_path do |f| %>
 
     <!-- Where do those errors come from? -->
-    <% if @article.errors.any? %>
+    <%# if @article.errors.any? %>
+        <!--
         <div id="error_explanation">
-          <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+          <h2><%#= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
           <ul>
-            <% @article.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
+            <%# @article.errors.full_messages.each do |msg| %>
+                <li><%#= msg %></li>
+            <%# end %>
           </ul>
         </div>
-    <% end %>
+        -->
+    <%# end %>
 
-    <p>
+
+    <!--p-->
         <!--
             :title refers to the title property of the article resource
             Typically, this means the title column in the article table.
             The same goes for the :text below.
         -->
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-    </p>
+        <%#= f.label :title %> <!-- <br> -->
+        <%#= f.text_field :title %>
+    <!--</p>-->
+
+    <!--
     <p>
-        <%= f.label :text %><br>
-        <%= f.text_area :text %>
+        <%#= f.label :text %><br>
+        <%#= f.text_area :text %>
     </p>
-    <p>
+    -->
+
+    <!--p-->
       <!--
           If you view the HTML code produced, this button has a name ="commit",
           of type="submit" with value="Save Article".
           It knows it saves an article from the "submit" type and that
           it refers to an Article from the form builder (recall form_for :article on top)
       -->
-      <%= f.submit %>
+      <%#= f.submit %>
         <!--
             When the form is submitted, its contents will be passed to Rails as 'parameters'.
             Those 'parameters' can be references inside the controller actions and do sth with them.
         -->
-    </p>
-<% end %>
+    <!--</p>-->
+<%# end %>
+
+<%= render 'form' %>
 
 <%= link_to 'Back', articles_path %>

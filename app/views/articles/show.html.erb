@@ -12,5 +12,40 @@
   <%= @article.text %>
 </p>
 
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.commenter %>
+    </p>
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+
+<!--
+    the form_for will build a nested route such as '/articles/1/comments'
+    and by default uses POST, so POST /articles/1/comments => comments#create
+-->
+<%= form_for([@article, @article.comments.build]) do |f| %>
+    <p>
+      <%= f.label :commenter %>
+      <%= f.text_field :commenter %>
+    </p>
+
+    <p>
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>
+
 <%= link_to 'Back', articles_path %>
-<%= link_to 'Edit', edit_article_path(@article) %>
+| <%= link_to 'Edit', edit_article_path(@article) %>

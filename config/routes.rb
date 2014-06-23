@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :articles do
-    resource :comments
+    resources :comments
   end
   #get 'welcome/index'
 

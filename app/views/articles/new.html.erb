@@ -1,3 +1,6 @@
+<h1>New article</h1>
+
+
 <!--
     The url: articles_path helper points the to 'articles' prefix in a url.
     Since this form creates a new article, it uses the POST method to do so,
@@ -7,6 +10,7 @@
 
 <%= form_for :article, url: articles_path do |f| %>
 
+    <!-- Where do those errors come from? -->
     <% if @article.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>

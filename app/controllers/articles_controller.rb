@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    # when this action is called from a failed attempt to create a new article, the instance
+    # @article is initialized to an empty one. How does it contain the errors of the failed
+    # ArticlesController#create?
     @article = Article.new
   end
 
@@ -42,6 +45,17 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  # the returned params will be sth like:
+  # params[] = {
+  #   :controller => 'articles'
+  #   :action => 'edit'
+  #   :id => 'x'
+  #   :article => {
+  #     :title => "new title"
+  #   }
+  # }
+  # if more article attributes are edited, they will be included as well
+  # ref. : https://stackoverflow.com/questions/8058835/passing-parameters-to-update-nested-attributes
   def update
     @article = Article.find(params[:id])
 

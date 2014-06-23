@@ -4,7 +4,13 @@
     The first argument of the form_for could be an instance var, like @article.
     Using :article though does the same thing, as long as the symbol name is the same
     as the instance variable.
+
+    Edit: If we use the instance variable @article, there's no need to specify the url
+          or the method; @article is a resource corresponding to a full set of RESTful
+          routes and Rails can infer the right URI and method.
+          This is how the form is used in the partial _form.html.erb
 -->
+<%#= form_for @article do |f| %>
 <%#= form_for :article, url: article_path(@article), method: :patch do |f| %>
 
     <%# if @article.errors.any? %>
@@ -14,11 +20,13 @@
             <ul>
               <%# @article.errors.full_messages.each do |msg| %>
                 <li><%#= msg %></li>
-              <%#end%>
+              <%# end %>
             </ul>
         </div>
         -->
+
     <%# end %>
+
     <!--
     <p>
         <%#= f.label :title %><br>
@@ -38,6 +46,7 @@
       <%#= f.submit %>
     </p>
     -->
+
 <%# end %>
 
 <%= render 'form' %>

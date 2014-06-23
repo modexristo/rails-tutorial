@@ -6,8 +6,14 @@
     Since this form creates a new article, it uses the POST method to do so,
     so it will use the 'POST articles' protocol. Looking in the 'rake routes'
     this route points to the 'articles#create' url.
+
+    Edit: If we use the instance variable @article, there's no need to specify the url
+          or the method; @article is a resource corresponding to a full set of RESTful
+          routes and Rails can infer the right URI and method.
+          This is how the form is used in the partial _form.html.erb
 -->
 
+<%#= form_for @article do |f| %>
 <%#= form_for :article, url: articles_path do |f| %>
 
     <!-- Where do those errors come from? -->
@@ -24,14 +30,13 @@
         -->
     <%# end %>
 
-
-    <!--p-->
-        <!--
-            :title refers to the title property of the article resource
-            Typically, this means the title column in the article table.
-            The same goes for the :text below.
-        -->
-        <%#= f.label :title %> <!-- <br> -->
+    <!--<p>-->
+    <!--
+        :title refers to the title property of the article resource
+        Typically, this means the title column in the article table.
+        The same goes for the :text below.
+    -->
+        <%#= f.label :title %> <!--<br>-->
         <%#= f.text_field :title %>
     <!--</p>-->
 
@@ -42,7 +47,7 @@
     </p>
     -->
 
-    <!--p-->
+    <!--<p>-->
       <!--
           If you view the HTML code produced, this button has a name ="commit",
           of type="submit" with value="Save Article".

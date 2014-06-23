@@ -14,38 +14,17 @@
 
 <h2>Comments</h2>
 <% @article.comments.each do |comment| %>
-    <p>
-      <strong>Commenter:</strong>
-      <%= comment.commenter %>
-    </p>
-    <p>
-      <strong>Comment:</strong>
-      <%= comment.body %>
-    </p>
+    <!--
+        the 'render' will iterate over each comment in the @article.comments
+         which it names 'comment' and passes to the partial with the same name.
+    -->
+    <%= render @article.comments %>
 <% end %>
 
 <h2>Add a comment:</h2>
 
-<!--
-    the form_for will build a nested route such as '/articles/1/comments'
-    and by default uses POST, so POST /articles/1/comments => comments#create
--->
-<%= form_for([@article, @article.comments.build]) do |f| %>
-    <p>
-      <%= f.label :commenter %>
-      <%= f.text_field :commenter %>
-    </p>
-
-    <p>
-      <%= f.label :body %>
-      <%= f.text_area :body %>
-    </p>
-
-    <p>
-      <%= f.submit %>
-    </p>
-
-<% end %>
+<!-- the @article inst. variable is available to all the partials renderd in this view -->
+<%= render "comments/form" %>
 
 <%= link_to 'Back', articles_path %>
 | <%= link_to 'Edit', edit_article_path(@article) %>

@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+
   # the params returned from the form in the articles/show.html.erb
   # will be sth like:
   # params[] = {
